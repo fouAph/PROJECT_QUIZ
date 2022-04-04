@@ -24,6 +24,7 @@ public class QuizManager : MonoBehaviourPunCallbacks
     // float currentTime;
     // PhotonView PV;
     public PlayerManager player;
+    [SerializeField] GameSettings gameSettings;
 
     // GameManager gameManager => GameManager.instance;
 
@@ -37,6 +38,7 @@ public class QuizManager : MonoBehaviourPunCallbacks
             foreach (var question in quizData.questions)
             {
                 question.questionCategory = quizData.questionCategory;
+                question.questionScore = gameSettings.defaultScore;
                 questions.Add(question); //= quizData.questions;
             }
         }
