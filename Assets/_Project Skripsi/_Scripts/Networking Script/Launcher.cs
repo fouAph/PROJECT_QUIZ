@@ -13,6 +13,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     [SerializeField] private TMP_InputField playerNameInputField;
     [SerializeField] private TMP_InputField roomNameInputField;
+    [SerializeField] private TMP_InputField joinRoomNameInputField;
     [SerializeField] private TMP_Text roomNameText;
     [SerializeField] private TMP_Text errorText;
     [SerializeField] private Transform roomListContent;
@@ -141,10 +142,10 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        foreach (Transform transform in roomListContent)
-        {
-            Destroy(transform.gameObject);
-        }
+        // foreach (Transform transform in roomListContent)
+        // {
+        //     Destroy(transform.gameObject);
+        // }
 
         for (int i = 0; i < roomList.Count; i++)
         {
@@ -152,7 +153,16 @@ public class Launcher : MonoBehaviourPunCallbacks
                 continue;
 
             Instantiate(roomListItemPrefab, roomListContent).GetComponent<RoomListItem>().Setup(roomList[i]);
+
+            print(roomList[i].Name);
         }
+
+        print("Room Updated");
+
+    }
+
+    public void JoinRoom()
+    {
 
     }
 

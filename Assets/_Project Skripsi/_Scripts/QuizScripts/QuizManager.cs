@@ -12,7 +12,7 @@ public class QuizManager : MonoBehaviourPunCallbacks
         if (instance != null) DestroyImmediate(instance);
         instance = this;
 
-        player = GetComponent<PlayerManager>();
+        player = FindObjectOfType<PlayerManager>();
         // DontDestroyOnLoad(this);
     }
     [SerializeField] QuizUI quizUI;

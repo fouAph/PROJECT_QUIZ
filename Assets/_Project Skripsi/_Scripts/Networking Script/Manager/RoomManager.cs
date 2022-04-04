@@ -9,6 +9,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static RoomManager instance;
     public int ping;
+    QuizManager quizManager => QuizManager.instance;
     private void Awake()
     {
 
@@ -47,6 +48,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             playerObj = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             playerObj.name = PhotonNetwork.NickName;
+
+            quizManager.player = playerObj.GetComponent<PlayerManager>();
         }
     }
 

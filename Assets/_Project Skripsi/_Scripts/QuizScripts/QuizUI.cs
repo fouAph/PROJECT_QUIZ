@@ -74,8 +74,8 @@ public class QuizUI : MonoBehaviour
         }
 
         //TODO Uncomment this line
-        // questionScoreText.text = $"Question Score: {question.questionScore.ToString()}";
-        // playerScoreText.text = $"Player Score: {quizManager.player.playerScore.ToString()}";
+        questionScoreText.text = $"Question Score: {question.questionScore.ToString()}";
+        playerScoreText.text = $"Player Score: {quizManager.player.playerScore.ToString()}";
         answered = false;
     }
 
