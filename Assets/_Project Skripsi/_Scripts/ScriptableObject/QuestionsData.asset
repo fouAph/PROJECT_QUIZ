@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b7fa6bfa08f5147872d9d07a3bb7ae, type: 3}
+  m_Name: QuestionsData
+  m_EditorClassIdentifier: 
+  questionCategory: 
+  questions:
+  - questionInfo: Kenapa Kita mengantuk?
+    questionType: 0
+    questionScore: 5
+    questionImage: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideo: {fileID: 0}
+    options:
+    - Karena Kita ingin tidur
+    - Karena kita ingin makan
+    - Karena Kita ingin minum
+    - Karena kita ingin sesuatu
+    correctAnswer: Karena Kita ingin tidur
+  - questionInfo: Siapa penemu lampu
+    questionType: 0
+    questionScore: 0
+    questionImage: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideo: {fileID: 0}
+    options:
+    - Tesla
+    - Gatau
+    - Nelson
+    - Carl Johnson
+    correctAnswer: Tesla
+  - questionInfo: Yang Bukan Bagian Dari Komputer Adalah?
+    questionType: 0
+    questionScore: 0
+    questionImage: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideo: {fileID: 0}
+    options:
+    - Mouse
+    - Keyboard
+    - Monitor
+    - Tempat TIdur
+    correctAnswer: Tempat TIdur
