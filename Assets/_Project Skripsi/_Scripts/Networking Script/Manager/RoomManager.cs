@@ -51,6 +51,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
             quizManager.player = playerObj.GetComponent<PlayerManager>();
         }
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            print(PhotonNetwork.PlayerList[i].NickName);
+        }
     }
 
 }

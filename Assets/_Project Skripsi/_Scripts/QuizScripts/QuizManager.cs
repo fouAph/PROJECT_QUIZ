@@ -19,34 +19,46 @@ public class QuizManager : MonoBehaviourPunCallbacks
     [SerializeField] List<QuizDataScriptableObject> quizDatas;
 
     public List<Question> questions;
-    // public float timerInSecond = 5;
     [SerializeField] private Question selectedQuestion;
-    // float currentTime;
-    // PhotonView PV;
+    PhotonView PV;
     public PlayerManager player;
     [SerializeField] GameSettings gameSettings;
 
-    // GameManager gameManager => GameManager.instance;
 
     // Start is called before the first frame updates
     void Start()
     {
-        // print(PhotonView.Find((int)PV.InstantiationData[0]).GetComponent<PlayerManager>().name);
-        // player = PhotonView.Find((int)PV.InstantiationData[0]).GetComponent<PlayerManager>();
-        foreach (var quizData in quizDatas)
+        PV = GetComponent<PhotonView>();
+        // AddQuestions();
+        RPC_AddQuestions();
+        SelectQuestion();
+    }
+
+    void AddQuestions()
+    {
+        PV.RPC("RPC_AddQuestions", RpcTarget.All);
+    }
+
+    public void RPC_AddQuestions()
+    {
+        for (int i = 0; i < quizDatas.Count; i++)
         {
-            foreach (var question in quizData.questions)
+            foreach (var question in quizDatas[i].questions)
             {
-                question.questionCategory = quizData.questionCategory;
+                question.questionCategory = quizDatas[i].questionCategory;
                 question.questionScore = gameSettings.defaultScore;
                 questions.Add(question); //= quizData.questions;
             }
         }
-        SelectQuestion();
     }
 
+    public void SelectQuestion()
+    {
+        PV.RPC("RPC_SelectQuestion", RpcTarget.All);
+    }
 
-    private void SelectQuestion()
+    [PunRPC]
+    private void RPC_SelectQuestion()
     {
         int val = Random.Range(0, questions.Count);
         if (questions.Count > 0)
@@ -58,11 +70,12 @@ public class QuizManager : MonoBehaviourPunCallbacks
             print($"No more Question, You answer it All");
         }
         quizUI.SetQuestion(selectedQuestion);
+
         // if (selectedQuestion.questionInfo.Length > 70)
         // {
         //     currentTime = 70;
         // }
-        print($"Total character {selectedQuestion.questionInfo.Length}");
+        // print($"Total character {selectedQuestion.questionInfo.Length}");
         // currentTime = timerInSecond;
 
         if (questions.Count > 0)
@@ -96,6 +109,8 @@ public class QuizManager : MonoBehaviourPunCallbacks
     {
         player.playerScore += selectedQuestion.questionScore;
     }
+
+
 
 }
 [System.Serializable]
